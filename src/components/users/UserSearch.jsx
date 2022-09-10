@@ -4,7 +4,7 @@ import GithubContext from "../../context/github/GithubContext"
 export default function UserSearch() {
 
   const [text, setText] = useState('')
-  const {users} = useContext(GithubContext)
+  const {users, searchUsers, clearUsers} = useContext(GithubContext)
 
   const handleChange = (e) => setText(e.target.value)
 
@@ -13,7 +13,7 @@ export default function UserSearch() {
     if(text === '') {
       alert('Please enter something')
     } else {
-      // @todo - search users
+      searchUsers(text)
       setText('')
     }
   }
@@ -39,9 +39,9 @@ export default function UserSearch() {
         </form>
       </div>
       {users.length > 0 && (
-        <div className="button btn btn-ghost btn-lg">
+        <button onClick={clearUsers} className="button btn btn-ghost btn-lg">
           Clear
-        </div>
+        </button>
       )}
     </div>
   )
