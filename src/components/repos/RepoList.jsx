@@ -1,4 +1,5 @@
 import {PropTypes} from 'prop-types'
+import RepoItem from './RepoItem'
 
 export default function RepoList({ repos }) {
 
@@ -11,7 +12,7 @@ export default function RepoList({ repos }) {
           Top Repositories
         </h2>
         {repos && repos.map((repo) => (
-          <h3>{repo.name}</h3>
+          <RepoItem key={repo.id} repo={repo}/>
         ))}
       </div>
     </div>
